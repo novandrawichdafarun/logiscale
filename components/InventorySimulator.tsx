@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useTransition } from "react";
 import {
   LineChart,
   Line,
@@ -12,10 +12,12 @@ import {
   ReferenceLine,
   Legend,
 } from "recharts";
-import { Settings2, RefreshCcw } from "lucide-react";
+import { Settings2, RefreshCcw, ShoppingCart, Loader2 } from "lucide-react";
+import { createPurchaseOrder } from "@/app/actions";
 
 interface Props {
   initialData: {
+    productId: string;
     avgDailySales: number;
     stdDev: number; // Kita butuh standar deviasi dikirim dari server
     leadTimeDays: number;
@@ -25,27 +27,25 @@ interface Props {
 }
 
 export default function InventorySimulator({ initialData, chartData }: Props) {
-  // State untuk Simulasi (User bisa mengubah ini)
   const [leadTime, setLeadTime] = useState(initialData.leadTimeDays);
-  const [serviceLevel, setServiceLevel] = useState(95); // Default 95% (Z=1.65)
+  const [serviceLevel, setServiceLevel] = useState(95); //! Default 95% (Z=1.65)
+  const [isPending, startTransition] = useTransition();
+  const [msg, setMsg] = useState("");
 
-  // --- CLIENT SIDE MATH ENGINE ---
-  // Kita kalkulasi ulang secara real-time saat slider digeser
   const simulation = useMemo(() => {
-    // 1. Konversi Service Level (%) ke Z-Score statistik
-    // 90%->1.28, 95%->1.65, 99%->2.33
+    //? Konversi Service Level (%) ke Z-Score statistik
+    //! 90%->1.28, 95%->1.65, 99%->2.33
     let zScore = 1.65;
     if (serviceLevel >= 99) zScore = 2.33;
     else if (serviceLevel >= 95) zScore = 1.65;
     else if (serviceLevel >= 90) zScore = 1.28;
     else zScore = 1.0; // 85%
 
-    // 2. Rumus Safety Stock Dinamis
     const newSafetyStock = Math.ceil(
       zScore * initialData.stdDev * Math.sqrt(leadTime),
     );
 
-    // 3. Rumus Reorder Point Dinamis
+    //? Rumus Reorder Point Dinamis
     const leadTimeDemand = initialData.avgDailySales * leadTime;
     const newReorderPoint = Math.ceil(leadTimeDemand + newSafetyStock);
 
@@ -56,9 +56,21 @@ export default function InventorySimulator({ initialData, chartData }: Props) {
     };
   }, [leadTime, serviceLevel, initialData]);
 
+  //? Handle Click
+  const handleRestock = () => {
+    const orderQty = simulation.reorderPoint * 2 - initialData.currentStock;
+
+    startTransition(async () => {
+      const result = await createPurchaseOrder(initialData.productId, orderQty);
+      if (result.success) setMsg(`✅ PO Created: ${orderQty} units`);
+    });
+  };
+
+  const isDanger = initialData.currentStock <= simulation.reorderPoint;
+
   return (
     <div className="space-y-6">
-      {/* 1. CONTROL PANEL (Simulator) */}
+      {/* CONTROL PANEL (Simulator) */}
       <div className="bg-white p-6 rounded-xl border border-blue-100 shadow-sm">
         <div className="flex items-center gap-2 mb-6 pb-4 border-b border-gray-100">
           <Settings2 className="text-blue-600" />
@@ -115,7 +127,7 @@ export default function InventorySimulator({ initialData, chartData }: Props) {
         </div>
       </div>
 
-      {/* 2. HASIL SIMULASI (Metrik) */}
+      {/* HASIL SIMULASI (Metrik) */}
       <div className="grid grid-cols-2 gap-4">
         <div className="bg-white p-5 rounded-xl border border-gray-200">
           <p className="text-gray-500 text-sm">Simulated Safety Stock</p>
@@ -123,28 +135,55 @@ export default function InventorySimulator({ initialData, chartData }: Props) {
             {simulation.safetyStock} Unit
           </p>
         </div>
+
         <div
           className={`p-5 rounded-xl border-2 ${
-            initialData.currentStock <= simulation.reorderPoint
+            isDanger
               ? "border-red-400 bg-red-50"
               : "border-green-400 bg-green-50"
           }`}
         >
-          <p className="text-gray-600 text-sm font-semibold">
-            Simulated Reorder Point (ROP)
-          </p>
-          <p className="text-3xl font-bold text-gray-900">
-            {simulation.reorderPoint} Unit
-          </p>
-          <p className="text-xs mt-1">
-            {initialData.currentStock <= simulation.reorderPoint
-              ? "⚠️ STOK SAAT INI TIDAK AMAN!"
+          <div className="flex justify-between items-center">
+            <p className="text-gray-600 text-sm font-semibold">
+              Simulated Reorder Point (ROP)
+            </p>
+            <p className="text-3xl font-bold text-gray-900">
+              {simulation.reorderPoint} Unit
+            </p>
+          </div>
+
+          {/* Tombol Restock */}
+          {isDanger && (
+            <button
+              onClick={handleRestock}
+              disabled={isPending}
+              className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg fount-bold shadow-lg active:sclae-95 transition-all"
+            >
+              {isPending ? (
+                <Loader2 className="animate-spin" />
+              ) : (
+                <ShoppingCart size={18} />
+              )}
+              {isPending ? "Ordering..." : "Auto-Restock"}
+            </button>
+          )}
+
+          <p className="text-xs mt-2 font-medium text-black">
+            {isDanger
+              ? "⚠️ STOK KRITIS! Segera lakukan pemesanan."
               : "✅ Stok saat ini masih aman."}
           </p>
+
+          {/* Pesan */}
+          {msg && (
+            <p className="text-green-700 font-bold text-sm mt-2 bg-green-200 p-2 rounded">
+              {msg}
+            </p>
+          )}
         </div>
       </div>
 
-      {/* 3. GRAFIK REAKTIF */}
+      {/* GRAFIK REAKTIF */}
       <div className="h-[400px] w-full bg-white p-4 rounded-xl shadow-sm border border-gray-100">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart

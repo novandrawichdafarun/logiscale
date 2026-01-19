@@ -3,12 +3,16 @@ import { prisma } from "@/lib/prisma";
 async function main() {
   // 1. Buat Organisasi Demo
   const org = await prisma.organization.create({
-    data: { name: "Demo Corp Ltd." },
+    data: {
+      id: crypto.randomUUID(),
+      name: "Demo Corp Ltd.",
+    },
   });
 
   // 2. Buat Supplier
   const supplier = await prisma.supplier.create({
     data: {
+      id: crypto.randomUUID(),
       organizationId: org.id,
       name: "Global Imports Inc.",
       leadTimeDays: 14, // Butuh 2 minggu kirim barang
@@ -18,6 +22,7 @@ async function main() {
   // 3. Buat Produk: "Gaming Laptop"
   const product = await prisma.product.create({
     data: {
+      id: crypto.randomUUID(),
       organizationId: org.id,
       supplierId: supplier.id,
       name: "Gaming Laptop X1",
@@ -53,6 +58,7 @@ async function main() {
     // Masukkan ke DB
     await prisma.transaction.create({
       data: {
+        id: crypto.randomUUID(),
         organizationId: org.id,
         productId: product.id,
         type: "OUTBOUND",

@@ -9,10 +9,10 @@
 * 🟢 You can import this file directly.
 */
 
-export const TransactionType = {
+export const transaction_type = {
   INBOUND: 'INBOUND',
   OUTBOUND: 'OUTBOUND',
   ADJUSTMENT: 'ADJUSTMENT'
 } as const
 
-export type TransactionType = (typeof TransactionType)[keyof typeof TransactionType]
+export type transaction_type = (typeof transaction_type)[keyof typeof transaction_type]

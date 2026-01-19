@@ -4,7 +4,7 @@
 // biome-ignore-all lint: generated file
 // @ts-nocheck 
 /*
- * This file exports the `Organization` model and its related types.
+ * This file exports the `organization` model and its related types.
  *
  * 🟢 You can import this file directly.
  */
@@ -13,10 +13,10 @@ import type * as $Enums from "../enums"
 import type * as Prisma from "../internal/prismaNamespace"
 
 /**
- * Model Organization
+ * Model organization
  * 
  */
-export type OrganizationModel = runtime.Types.Result.DefaultSelection<Prisma.$OrganizationPayload>
+export type organizationModel = runtime.Types.Result.DefaultSelection<Prisma.$organizationPayload>
 
 export type AggregateOrganization = {
   _count: OrganizationCountAggregateOutputType | null
@@ -59,37 +59,37 @@ export type OrganizationCountAggregateInputType = {
 
 export type OrganizationAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which Organization to aggregate.
+   * Filter which organization to aggregate.
    */
-  where?: Prisma.OrganizationWhereInput
+  where?: Prisma.organizationWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of Organizations to fetch.
+   * Determine the order of organizations to fetch.
    */
-  orderBy?: Prisma.OrganizationOrderByWithRelationInput | Prisma.OrganizationOrderByWithRelationInput[]
+  orderBy?: Prisma.organizationOrderByWithRelationInput | Prisma.organizationOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
    * Sets the start position
    */
-  cursor?: Prisma.OrganizationWhereUniqueInput
+  cursor?: Prisma.organizationWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` Organizations from the position of the cursor.
+   * Take `±n` organizations from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` Organizations.
+   * Skip the first `n` organizations.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Count returned Organizations
+   * Count returned organizations
   **/
   _count?: true | OrganizationCountAggregateInputType
   /**
@@ -117,11 +117,11 @@ export type GetOrganizationAggregateType<T extends OrganizationAggregateArgs> = 
 
 
 
-export type OrganizationGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.OrganizationWhereInput
-  orderBy?: Prisma.OrganizationOrderByWithAggregationInput | Prisma.OrganizationOrderByWithAggregationInput[]
+export type organizationGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.organizationWhereInput
+  orderBy?: Prisma.organizationOrderByWithAggregationInput | Prisma.organizationOrderByWithAggregationInput[]
   by: Prisma.OrganizationScalarFieldEnum[] | Prisma.OrganizationScalarFieldEnum
-  having?: Prisma.OrganizationScalarWhereWithAggregatesInput
+  having?: Prisma.organizationScalarWhereWithAggregatesInput
   take?: number
   skip?: number
   _count?: OrganizationCountAggregateInputType | true
@@ -137,7 +137,7 @@ export type OrganizationGroupByOutputType = {
   _max: OrganizationMaxAggregateOutputType | null
 }
 
-type GetOrganizationGroupByPayload<T extends OrganizationGroupByArgs> = Prisma.PrismaPromise<
+type GetOrganizationGroupByPayload<T extends organizationGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<OrganizationGroupByOutputType, T['by']> &
       {
@@ -152,302 +152,302 @@ type GetOrganizationGroupByPayload<T extends OrganizationGroupByArgs> = Prisma.P
 
 
 
-export type OrganizationWhereInput = {
-  AND?: Prisma.OrganizationWhereInput | Prisma.OrganizationWhereInput[]
-  OR?: Prisma.OrganizationWhereInput[]
-  NOT?: Prisma.OrganizationWhereInput | Prisma.OrganizationWhereInput[]
-  id?: Prisma.StringFilter<"Organization"> | string
-  name?: Prisma.StringFilter<"Organization"> | string
-  products?: Prisma.ProductListRelationFilter
-  suppliers?: Prisma.SupplierListRelationFilter
-  transactions?: Prisma.TransactionListRelationFilter
+export type organizationWhereInput = {
+  AND?: Prisma.organizationWhereInput | Prisma.organizationWhereInput[]
+  OR?: Prisma.organizationWhereInput[]
+  NOT?: Prisma.organizationWhereInput | Prisma.organizationWhereInput[]
+  id?: Prisma.StringFilter<"organization"> | string
+  name?: Prisma.StringFilter<"organization"> | string
+  product?: Prisma.ProductListRelationFilter
+  supplier?: Prisma.SupplierListRelationFilter
+  transaction?: Prisma.TransactionListRelationFilter
 }
 
-export type OrganizationOrderByWithRelationInput = {
+export type organizationOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  products?: Prisma.ProductOrderByRelationAggregateInput
-  suppliers?: Prisma.SupplierOrderByRelationAggregateInput
-  transactions?: Prisma.TransactionOrderByRelationAggregateInput
-  _relevance?: Prisma.OrganizationOrderByRelevanceInput
+  product?: Prisma.productOrderByRelationAggregateInput
+  supplier?: Prisma.supplierOrderByRelationAggregateInput
+  transaction?: Prisma.transactionOrderByRelationAggregateInput
+  _relevance?: Prisma.organizationOrderByRelevanceInput
 }
 
-export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
+export type organizationWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  AND?: Prisma.OrganizationWhereInput | Prisma.OrganizationWhereInput[]
-  OR?: Prisma.OrganizationWhereInput[]
-  NOT?: Prisma.OrganizationWhereInput | Prisma.OrganizationWhereInput[]
-  name?: Prisma.StringFilter<"Organization"> | string
-  products?: Prisma.ProductListRelationFilter
-  suppliers?: Prisma.SupplierListRelationFilter
-  transactions?: Prisma.TransactionListRelationFilter
+  AND?: Prisma.organizationWhereInput | Prisma.organizationWhereInput[]
+  OR?: Prisma.organizationWhereInput[]
+  NOT?: Prisma.organizationWhereInput | Prisma.organizationWhereInput[]
+  name?: Prisma.StringFilter<"organization"> | string
+  product?: Prisma.ProductListRelationFilter
+  supplier?: Prisma.SupplierListRelationFilter
+  transaction?: Prisma.TransactionListRelationFilter
 }, "id">
 
-export type OrganizationOrderByWithAggregationInput = {
+export type organizationOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  _count?: Prisma.OrganizationCountOrderByAggregateInput
-  _max?: Prisma.OrganizationMaxOrderByAggregateInput
-  _min?: Prisma.OrganizationMinOrderByAggregateInput
+  _count?: Prisma.organizationCountOrderByAggregateInput
+  _max?: Prisma.organizationMaxOrderByAggregateInput
+  _min?: Prisma.organizationMinOrderByAggregateInput
 }
 
-export type OrganizationScalarWhereWithAggregatesInput = {
-  AND?: Prisma.OrganizationScalarWhereWithAggregatesInput | Prisma.OrganizationScalarWhereWithAggregatesInput[]
-  OR?: Prisma.OrganizationScalarWhereWithAggregatesInput[]
-  NOT?: Prisma.OrganizationScalarWhereWithAggregatesInput | Prisma.OrganizationScalarWhereWithAggregatesInput[]
-  id?: Prisma.StringWithAggregatesFilter<"Organization"> | string
-  name?: Prisma.StringWithAggregatesFilter<"Organization"> | string
+export type organizationScalarWhereWithAggregatesInput = {
+  AND?: Prisma.organizationScalarWhereWithAggregatesInput | Prisma.organizationScalarWhereWithAggregatesInput[]
+  OR?: Prisma.organizationScalarWhereWithAggregatesInput[]
+  NOT?: Prisma.organizationScalarWhereWithAggregatesInput | Prisma.organizationScalarWhereWithAggregatesInput[]
+  id?: Prisma.StringWithAggregatesFilter<"organization"> | string
+  name?: Prisma.StringWithAggregatesFilter<"organization"> | string
 }
 
-export type OrganizationCreateInput = {
-  id?: string
+export type organizationCreateInput = {
+  id: string
   name: string
-  products?: Prisma.ProductCreateNestedManyWithoutOrganizationInput
-  suppliers?: Prisma.SupplierCreateNestedManyWithoutOrganizationInput
-  transactions?: Prisma.TransactionCreateNestedManyWithoutOrganizationInput
+  product?: Prisma.productCreateNestedManyWithoutOrganizationInput
+  supplier?: Prisma.supplierCreateNestedManyWithoutOrganizationInput
+  transaction?: Prisma.transactionCreateNestedManyWithoutOrganizationInput
 }
 
-export type OrganizationUncheckedCreateInput = {
-  id?: string
+export type organizationUncheckedCreateInput = {
+  id: string
   name: string
-  products?: Prisma.ProductUncheckedCreateNestedManyWithoutOrganizationInput
-  suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutOrganizationInput
-  transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutOrganizationInput
+  product?: Prisma.productUncheckedCreateNestedManyWithoutOrganizationInput
+  supplier?: Prisma.supplierUncheckedCreateNestedManyWithoutOrganizationInput
+  transaction?: Prisma.transactionUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
-export type OrganizationUpdateInput = {
+export type organizationUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  products?: Prisma.ProductUpdateManyWithoutOrganizationNestedInput
-  suppliers?: Prisma.SupplierUpdateManyWithoutOrganizationNestedInput
-  transactions?: Prisma.TransactionUpdateManyWithoutOrganizationNestedInput
+  product?: Prisma.productUpdateManyWithoutOrganizationNestedInput
+  supplier?: Prisma.supplierUpdateManyWithoutOrganizationNestedInput
+  transaction?: Prisma.transactionUpdateManyWithoutOrganizationNestedInput
 }
 
-export type OrganizationUncheckedUpdateInput = {
+export type organizationUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  products?: Prisma.ProductUncheckedUpdateManyWithoutOrganizationNestedInput
-  suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutOrganizationNestedInput
-  transactions?: Prisma.TransactionUncheckedUpdateManyWithoutOrganizationNestedInput
+  product?: Prisma.productUncheckedUpdateManyWithoutOrganizationNestedInput
+  supplier?: Prisma.supplierUncheckedUpdateManyWithoutOrganizationNestedInput
+  transaction?: Prisma.transactionUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
-export type OrganizationCreateManyInput = {
-  id?: string
+export type organizationCreateManyInput = {
+  id: string
   name: string
 }
 
-export type OrganizationUpdateManyMutationInput = {
+export type organizationUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
-export type OrganizationUncheckedUpdateManyInput = {
+export type organizationUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
-export type OrganizationOrderByRelevanceInput = {
-  fields: Prisma.OrganizationOrderByRelevanceFieldEnum | Prisma.OrganizationOrderByRelevanceFieldEnum[]
+export type organizationOrderByRelevanceInput = {
+  fields: Prisma.organizationOrderByRelevanceFieldEnum | Prisma.organizationOrderByRelevanceFieldEnum[]
   sort: Prisma.SortOrder
   search: string
 }
 
-export type OrganizationCountOrderByAggregateInput = {
+export type organizationCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
 }
 
-export type OrganizationMaxOrderByAggregateInput = {
+export type organizationMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
 }
 
-export type OrganizationMinOrderByAggregateInput = {
+export type organizationMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
 }
 
 export type OrganizationScalarRelationFilter = {
-  is?: Prisma.OrganizationWhereInput
-  isNot?: Prisma.OrganizationWhereInput
+  is?: Prisma.organizationWhereInput
+  isNot?: Prisma.organizationWhereInput
 }
 
 export type StringFieldUpdateOperationsInput = {
   set?: string
 }
 
-export type OrganizationCreateNestedOneWithoutSuppliersInput = {
-  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutSuppliersInput, Prisma.OrganizationUncheckedCreateWithoutSuppliersInput>
-  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutSuppliersInput
-  connect?: Prisma.OrganizationWhereUniqueInput
+export type organizationCreateNestedOneWithoutProductInput = {
+  create?: Prisma.XOR<Prisma.organizationCreateWithoutProductInput, Prisma.organizationUncheckedCreateWithoutProductInput>
+  connectOrCreate?: Prisma.organizationCreateOrConnectWithoutProductInput
+  connect?: Prisma.organizationWhereUniqueInput
 }
 
-export type OrganizationUpdateOneRequiredWithoutSuppliersNestedInput = {
-  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutSuppliersInput, Prisma.OrganizationUncheckedCreateWithoutSuppliersInput>
-  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutSuppliersInput
-  upsert?: Prisma.OrganizationUpsertWithoutSuppliersInput
-  connect?: Prisma.OrganizationWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutSuppliersInput, Prisma.OrganizationUpdateWithoutSuppliersInput>, Prisma.OrganizationUncheckedUpdateWithoutSuppliersInput>
+export type organizationUpdateOneRequiredWithoutProductNestedInput = {
+  create?: Prisma.XOR<Prisma.organizationCreateWithoutProductInput, Prisma.organizationUncheckedCreateWithoutProductInput>
+  connectOrCreate?: Prisma.organizationCreateOrConnectWithoutProductInput
+  upsert?: Prisma.organizationUpsertWithoutProductInput
+  connect?: Prisma.organizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.organizationUpdateToOneWithWhereWithoutProductInput, Prisma.organizationUpdateWithoutProductInput>, Prisma.organizationUncheckedUpdateWithoutProductInput>
 }
 
-export type OrganizationCreateNestedOneWithoutProductsInput = {
-  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutProductsInput, Prisma.OrganizationUncheckedCreateWithoutProductsInput>
-  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutProductsInput
-  connect?: Prisma.OrganizationWhereUniqueInput
+export type organizationCreateNestedOneWithoutSupplierInput = {
+  create?: Prisma.XOR<Prisma.organizationCreateWithoutSupplierInput, Prisma.organizationUncheckedCreateWithoutSupplierInput>
+  connectOrCreate?: Prisma.organizationCreateOrConnectWithoutSupplierInput
+  connect?: Prisma.organizationWhereUniqueInput
 }
 
-export type OrganizationUpdateOneRequiredWithoutProductsNestedInput = {
-  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutProductsInput, Prisma.OrganizationUncheckedCreateWithoutProductsInput>
-  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutProductsInput
-  upsert?: Prisma.OrganizationUpsertWithoutProductsInput
-  connect?: Prisma.OrganizationWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutProductsInput, Prisma.OrganizationUpdateWithoutProductsInput>, Prisma.OrganizationUncheckedUpdateWithoutProductsInput>
+export type organizationUpdateOneRequiredWithoutSupplierNestedInput = {
+  create?: Prisma.XOR<Prisma.organizationCreateWithoutSupplierInput, Prisma.organizationUncheckedCreateWithoutSupplierInput>
+  connectOrCreate?: Prisma.organizationCreateOrConnectWithoutSupplierInput
+  upsert?: Prisma.organizationUpsertWithoutSupplierInput
+  connect?: Prisma.organizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.organizationUpdateToOneWithWhereWithoutSupplierInput, Prisma.organizationUpdateWithoutSupplierInput>, Prisma.organizationUncheckedUpdateWithoutSupplierInput>
 }
 
-export type OrganizationCreateNestedOneWithoutTransactionsInput = {
-  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutTransactionsInput, Prisma.OrganizationUncheckedCreateWithoutTransactionsInput>
-  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutTransactionsInput
-  connect?: Prisma.OrganizationWhereUniqueInput
+export type organizationCreateNestedOneWithoutTransactionInput = {
+  create?: Prisma.XOR<Prisma.organizationCreateWithoutTransactionInput, Prisma.organizationUncheckedCreateWithoutTransactionInput>
+  connectOrCreate?: Prisma.organizationCreateOrConnectWithoutTransactionInput
+  connect?: Prisma.organizationWhereUniqueInput
 }
 
-export type OrganizationUpdateOneRequiredWithoutTransactionsNestedInput = {
-  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutTransactionsInput, Prisma.OrganizationUncheckedCreateWithoutTransactionsInput>
-  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutTransactionsInput
-  upsert?: Prisma.OrganizationUpsertWithoutTransactionsInput
-  connect?: Prisma.OrganizationWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutTransactionsInput, Prisma.OrganizationUpdateWithoutTransactionsInput>, Prisma.OrganizationUncheckedUpdateWithoutTransactionsInput>
+export type organizationUpdateOneRequiredWithoutTransactionNestedInput = {
+  create?: Prisma.XOR<Prisma.organizationCreateWithoutTransactionInput, Prisma.organizationUncheckedCreateWithoutTransactionInput>
+  connectOrCreate?: Prisma.organizationCreateOrConnectWithoutTransactionInput
+  upsert?: Prisma.organizationUpsertWithoutTransactionInput
+  connect?: Prisma.organizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.organizationUpdateToOneWithWhereWithoutTransactionInput, Prisma.organizationUpdateWithoutTransactionInput>, Prisma.organizationUncheckedUpdateWithoutTransactionInput>
 }
 
-export type OrganizationCreateWithoutSuppliersInput = {
-  id?: string
+export type organizationCreateWithoutProductInput = {
+  id: string
   name: string
-  products?: Prisma.ProductCreateNestedManyWithoutOrganizationInput
-  transactions?: Prisma.TransactionCreateNestedManyWithoutOrganizationInput
+  supplier?: Prisma.supplierCreateNestedManyWithoutOrganizationInput
+  transaction?: Prisma.transactionCreateNestedManyWithoutOrganizationInput
 }
 
-export type OrganizationUncheckedCreateWithoutSuppliersInput = {
-  id?: string
+export type organizationUncheckedCreateWithoutProductInput = {
+  id: string
   name: string
-  products?: Prisma.ProductUncheckedCreateNestedManyWithoutOrganizationInput
-  transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutOrganizationInput
+  supplier?: Prisma.supplierUncheckedCreateNestedManyWithoutOrganizationInput
+  transaction?: Prisma.transactionUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
-export type OrganizationCreateOrConnectWithoutSuppliersInput = {
-  where: Prisma.OrganizationWhereUniqueInput
-  create: Prisma.XOR<Prisma.OrganizationCreateWithoutSuppliersInput, Prisma.OrganizationUncheckedCreateWithoutSuppliersInput>
+export type organizationCreateOrConnectWithoutProductInput = {
+  where: Prisma.organizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.organizationCreateWithoutProductInput, Prisma.organizationUncheckedCreateWithoutProductInput>
 }
 
-export type OrganizationUpsertWithoutSuppliersInput = {
-  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutSuppliersInput, Prisma.OrganizationUncheckedUpdateWithoutSuppliersInput>
-  create: Prisma.XOR<Prisma.OrganizationCreateWithoutSuppliersInput, Prisma.OrganizationUncheckedCreateWithoutSuppliersInput>
-  where?: Prisma.OrganizationWhereInput
+export type organizationUpsertWithoutProductInput = {
+  update: Prisma.XOR<Prisma.organizationUpdateWithoutProductInput, Prisma.organizationUncheckedUpdateWithoutProductInput>
+  create: Prisma.XOR<Prisma.organizationCreateWithoutProductInput, Prisma.organizationUncheckedCreateWithoutProductInput>
+  where?: Prisma.organizationWhereInput
 }
 
-export type OrganizationUpdateToOneWithWhereWithoutSuppliersInput = {
-  where?: Prisma.OrganizationWhereInput
-  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutSuppliersInput, Prisma.OrganizationUncheckedUpdateWithoutSuppliersInput>
+export type organizationUpdateToOneWithWhereWithoutProductInput = {
+  where?: Prisma.organizationWhereInput
+  data: Prisma.XOR<Prisma.organizationUpdateWithoutProductInput, Prisma.organizationUncheckedUpdateWithoutProductInput>
 }
 
-export type OrganizationUpdateWithoutSuppliersInput = {
+export type organizationUpdateWithoutProductInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  products?: Prisma.ProductUpdateManyWithoutOrganizationNestedInput
-  transactions?: Prisma.TransactionUpdateManyWithoutOrganizationNestedInput
+  supplier?: Prisma.supplierUpdateManyWithoutOrganizationNestedInput
+  transaction?: Prisma.transactionUpdateManyWithoutOrganizationNestedInput
 }
 
-export type OrganizationUncheckedUpdateWithoutSuppliersInput = {
+export type organizationUncheckedUpdateWithoutProductInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  products?: Prisma.ProductUncheckedUpdateManyWithoutOrganizationNestedInput
-  transactions?: Prisma.TransactionUncheckedUpdateManyWithoutOrganizationNestedInput
+  supplier?: Prisma.supplierUncheckedUpdateManyWithoutOrganizationNestedInput
+  transaction?: Prisma.transactionUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
-export type OrganizationCreateWithoutProductsInput = {
-  id?: string
+export type organizationCreateWithoutSupplierInput = {
+  id: string
   name: string
-  suppliers?: Prisma.SupplierCreateNestedManyWithoutOrganizationInput
-  transactions?: Prisma.TransactionCreateNestedManyWithoutOrganizationInput
+  product?: Prisma.productCreateNestedManyWithoutOrganizationInput
+  transaction?: Prisma.transactionCreateNestedManyWithoutOrganizationInput
 }
 
-export type OrganizationUncheckedCreateWithoutProductsInput = {
-  id?: string
+export type organizationUncheckedCreateWithoutSupplierInput = {
+  id: string
   name: string
-  suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutOrganizationInput
-  transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutOrganizationInput
+  product?: Prisma.productUncheckedCreateNestedManyWithoutOrganizationInput
+  transaction?: Prisma.transactionUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
-export type OrganizationCreateOrConnectWithoutProductsInput = {
-  where: Prisma.OrganizationWhereUniqueInput
-  create: Prisma.XOR<Prisma.OrganizationCreateWithoutProductsInput, Prisma.OrganizationUncheckedCreateWithoutProductsInput>
+export type organizationCreateOrConnectWithoutSupplierInput = {
+  where: Prisma.organizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.organizationCreateWithoutSupplierInput, Prisma.organizationUncheckedCreateWithoutSupplierInput>
 }
 
-export type OrganizationUpsertWithoutProductsInput = {
-  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutProductsInput, Prisma.OrganizationUncheckedUpdateWithoutProductsInput>
-  create: Prisma.XOR<Prisma.OrganizationCreateWithoutProductsInput, Prisma.OrganizationUncheckedCreateWithoutProductsInput>
-  where?: Prisma.OrganizationWhereInput
+export type organizationUpsertWithoutSupplierInput = {
+  update: Prisma.XOR<Prisma.organizationUpdateWithoutSupplierInput, Prisma.organizationUncheckedUpdateWithoutSupplierInput>
+  create: Prisma.XOR<Prisma.organizationCreateWithoutSupplierInput, Prisma.organizationUncheckedCreateWithoutSupplierInput>
+  where?: Prisma.organizationWhereInput
 }
 
-export type OrganizationUpdateToOneWithWhereWithoutProductsInput = {
-  where?: Prisma.OrganizationWhereInput
-  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutProductsInput, Prisma.OrganizationUncheckedUpdateWithoutProductsInput>
+export type organizationUpdateToOneWithWhereWithoutSupplierInput = {
+  where?: Prisma.organizationWhereInput
+  data: Prisma.XOR<Prisma.organizationUpdateWithoutSupplierInput, Prisma.organizationUncheckedUpdateWithoutSupplierInput>
 }
 
-export type OrganizationUpdateWithoutProductsInput = {
+export type organizationUpdateWithoutSupplierInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  suppliers?: Prisma.SupplierUpdateManyWithoutOrganizationNestedInput
-  transactions?: Prisma.TransactionUpdateManyWithoutOrganizationNestedInput
+  product?: Prisma.productUpdateManyWithoutOrganizationNestedInput
+  transaction?: Prisma.transactionUpdateManyWithoutOrganizationNestedInput
 }
 
-export type OrganizationUncheckedUpdateWithoutProductsInput = {
+export type organizationUncheckedUpdateWithoutSupplierInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutOrganizationNestedInput
-  transactions?: Prisma.TransactionUncheckedUpdateManyWithoutOrganizationNestedInput
+  product?: Prisma.productUncheckedUpdateManyWithoutOrganizationNestedInput
+  transaction?: Prisma.transactionUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
-export type OrganizationCreateWithoutTransactionsInput = {
-  id?: string
+export type organizationCreateWithoutTransactionInput = {
+  id: string
   name: string
-  products?: Prisma.ProductCreateNestedManyWithoutOrganizationInput
-  suppliers?: Prisma.SupplierCreateNestedManyWithoutOrganizationInput
+  product?: Prisma.productCreateNestedManyWithoutOrganizationInput
+  supplier?: Prisma.supplierCreateNestedManyWithoutOrganizationInput
 }
 
-export type OrganizationUncheckedCreateWithoutTransactionsInput = {
-  id?: string
+export type organizationUncheckedCreateWithoutTransactionInput = {
+  id: string
   name: string
-  products?: Prisma.ProductUncheckedCreateNestedManyWithoutOrganizationInput
-  suppliers?: Prisma.SupplierUncheckedCreateNestedManyWithoutOrganizationInput
+  product?: Prisma.productUncheckedCreateNestedManyWithoutOrganizationInput
+  supplier?: Prisma.supplierUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
-export type OrganizationCreateOrConnectWithoutTransactionsInput = {
-  where: Prisma.OrganizationWhereUniqueInput
-  create: Prisma.XOR<Prisma.OrganizationCreateWithoutTransactionsInput, Prisma.OrganizationUncheckedCreateWithoutTransactionsInput>
+export type organizationCreateOrConnectWithoutTransactionInput = {
+  where: Prisma.organizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.organizationCreateWithoutTransactionInput, Prisma.organizationUncheckedCreateWithoutTransactionInput>
 }
 
-export type OrganizationUpsertWithoutTransactionsInput = {
-  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutTransactionsInput, Prisma.OrganizationUncheckedUpdateWithoutTransactionsInput>
-  create: Prisma.XOR<Prisma.OrganizationCreateWithoutTransactionsInput, Prisma.OrganizationUncheckedCreateWithoutTransactionsInput>
-  where?: Prisma.OrganizationWhereInput
+export type organizationUpsertWithoutTransactionInput = {
+  update: Prisma.XOR<Prisma.organizationUpdateWithoutTransactionInput, Prisma.organizationUncheckedUpdateWithoutTransactionInput>
+  create: Prisma.XOR<Prisma.organizationCreateWithoutTransactionInput, Prisma.organizationUncheckedCreateWithoutTransactionInput>
+  where?: Prisma.organizationWhereInput
 }
 
-export type OrganizationUpdateToOneWithWhereWithoutTransactionsInput = {
-  where?: Prisma.OrganizationWhereInput
-  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutTransactionsInput, Prisma.OrganizationUncheckedUpdateWithoutTransactionsInput>
+export type organizationUpdateToOneWithWhereWithoutTransactionInput = {
+  where?: Prisma.organizationWhereInput
+  data: Prisma.XOR<Prisma.organizationUpdateWithoutTransactionInput, Prisma.organizationUncheckedUpdateWithoutTransactionInput>
 }
 
-export type OrganizationUpdateWithoutTransactionsInput = {
+export type organizationUpdateWithoutTransactionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  products?: Prisma.ProductUpdateManyWithoutOrganizationNestedInput
-  suppliers?: Prisma.SupplierUpdateManyWithoutOrganizationNestedInput
+  product?: Prisma.productUpdateManyWithoutOrganizationNestedInput
+  supplier?: Prisma.supplierUpdateManyWithoutOrganizationNestedInput
 }
 
-export type OrganizationUncheckedUpdateWithoutTransactionsInput = {
+export type organizationUncheckedUpdateWithoutTransactionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  products?: Prisma.ProductUncheckedUpdateManyWithoutOrganizationNestedInput
-  suppliers?: Prisma.SupplierUncheckedUpdateManyWithoutOrganizationNestedInput
+  product?: Prisma.productUncheckedUpdateManyWithoutOrganizationNestedInput
+  supplier?: Prisma.supplierUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 
@@ -456,15 +456,15 @@ export type OrganizationUncheckedUpdateWithoutTransactionsInput = {
  */
 
 export type OrganizationCountOutputType = {
-  products: number
-  suppliers: number
-  transactions: number
+  product: number
+  supplier: number
+  transaction: number
 }
 
 export type OrganizationCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  products?: boolean | OrganizationCountOutputTypeCountProductsArgs
-  suppliers?: boolean | OrganizationCountOutputTypeCountSuppliersArgs
-  transactions?: boolean | OrganizationCountOutputTypeCountTransactionsArgs
+  product?: boolean | OrganizationCountOutputTypeCountProductArgs
+  supplier?: boolean | OrganizationCountOutputTypeCountSupplierArgs
+  transaction?: boolean | OrganizationCountOutputTypeCountTransactionArgs
 }
 
 /**
@@ -480,55 +480,55 @@ export type OrganizationCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types
 /**
  * OrganizationCountOutputType without action
  */
-export type OrganizationCountOutputTypeCountProductsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ProductWhereInput
+export type OrganizationCountOutputTypeCountProductArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.productWhereInput
 }
 
 /**
  * OrganizationCountOutputType without action
  */
-export type OrganizationCountOutputTypeCountSuppliersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SupplierWhereInput
+export type OrganizationCountOutputTypeCountSupplierArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.supplierWhereInput
 }
 
 /**
  * OrganizationCountOutputType without action
  */
-export type OrganizationCountOutputTypeCountTransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.TransactionWhereInput
+export type OrganizationCountOutputTypeCountTransactionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.transactionWhereInput
 }
 
 
-export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type organizationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
-  products?: boolean | Prisma.Organization$productsArgs<ExtArgs>
-  suppliers?: boolean | Prisma.Organization$suppliersArgs<ExtArgs>
-  transactions?: boolean | Prisma.Organization$transactionsArgs<ExtArgs>
+  product?: boolean | Prisma.organization$productArgs<ExtArgs>
+  supplier?: boolean | Prisma.organization$supplierArgs<ExtArgs>
+  transaction?: boolean | Prisma.organization$transactionArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["organization"]>
 
 
 
-export type OrganizationSelectScalar = {
+export type organizationSelectScalar = {
   id?: boolean
   name?: boolean
 }
 
-export type OrganizationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name", ExtArgs["result"]["organization"]>
-export type OrganizationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  products?: boolean | Prisma.Organization$productsArgs<ExtArgs>
-  suppliers?: boolean | Prisma.Organization$suppliersArgs<ExtArgs>
-  transactions?: boolean | Prisma.Organization$transactionsArgs<ExtArgs>
+export type organizationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name", ExtArgs["result"]["organization"]>
+export type organizationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  product?: boolean | Prisma.organization$productArgs<ExtArgs>
+  supplier?: boolean | Prisma.organization$supplierArgs<ExtArgs>
+  transaction?: boolean | Prisma.organization$transactionArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
 }
 
-export type $OrganizationPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  name: "Organization"
+export type $organizationPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  name: "organization"
   objects: {
-    products: Prisma.$ProductPayload<ExtArgs>[]
-    suppliers: Prisma.$SupplierPayload<ExtArgs>[]
-    transactions: Prisma.$TransactionPayload<ExtArgs>[]
+    product: Prisma.$productPayload<ExtArgs>[]
+    supplier: Prisma.$supplierPayload<ExtArgs>[]
+    transaction: Prisma.$transactionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -537,18 +537,18 @@ export type $OrganizationPayload<ExtArgs extends runtime.Types.Extensions.Intern
   composites: {}
 }
 
-export type OrganizationGetPayload<S extends boolean | null | undefined | OrganizationDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$OrganizationPayload, S>
+export type organizationGetPayload<S extends boolean | null | undefined | organizationDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$organizationPayload, S>
 
-export type OrganizationCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
-  Omit<OrganizationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+export type organizationCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
+  Omit<organizationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
     select?: OrganizationCountAggregateInputType | true
   }
 
-export interface OrganizationDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Organization'], meta: { name: 'Organization' } }
+export interface organizationDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['organization'], meta: { name: 'organization' } }
   /**
    * Find zero or one Organization that matches the filter.
-   * @param {OrganizationFindUniqueArgs} args - Arguments to find a Organization
+   * @param {organizationFindUniqueArgs} args - Arguments to find a Organization
    * @example
    * // Get one Organization
    * const organization = await prisma.organization.findUnique({
@@ -557,12 +557,12 @@ export interface OrganizationDelegate<ExtArgs extends runtime.Types.Extensions.I
    *   }
    * })
    */
-  findUnique<T extends OrganizationFindUniqueArgs>(args: Prisma.SelectSubset<T, OrganizationFindUniqueArgs<ExtArgs>>): Prisma.Prisma__OrganizationClient<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findUnique<T extends organizationFindUniqueArgs>(args: Prisma.SelectSubset<T, organizationFindUniqueArgs<ExtArgs>>): Prisma.Prisma__organizationClient<runtime.Types.Result.GetResult<Prisma.$organizationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find one Organization that matches the filter or throw an error with `error.code='P2025'`
    * if no matches were found.
-   * @param {OrganizationFindUniqueOrThrowArgs} args - Arguments to find a Organization
+   * @param {organizationFindUniqueOrThrowArgs} args - Arguments to find a Organization
    * @example
    * // Get one Organization
    * const organization = await prisma.organization.findUniqueOrThrow({
@@ -571,13 +571,13 @@ export interface OrganizationDelegate<ExtArgs extends runtime.Types.Extensions.I
    *   }
    * })
    */
-  findUniqueOrThrow<T extends OrganizationFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, OrganizationFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__OrganizationClient<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findUniqueOrThrow<T extends organizationFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, organizationFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__organizationClient<runtime.Types.Result.GetResult<Prisma.$organizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find the first Organization that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {OrganizationFindFirstArgs} args - Arguments to find a Organization
+   * @param {organizationFindFirstArgs} args - Arguments to find a Organization
    * @example
    * // Get one Organization
    * const organization = await prisma.organization.findFirst({
@@ -586,14 +586,14 @@ export interface OrganizationDelegate<ExtArgs extends runtime.Types.Extensions.I
    *   }
    * })
    */
-  findFirst<T extends OrganizationFindFirstArgs>(args?: Prisma.SelectSubset<T, OrganizationFindFirstArgs<ExtArgs>>): Prisma.Prisma__OrganizationClient<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findFirst<T extends organizationFindFirstArgs>(args?: Prisma.SelectSubset<T, organizationFindFirstArgs<ExtArgs>>): Prisma.Prisma__organizationClient<runtime.Types.Result.GetResult<Prisma.$organizationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find the first Organization that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {OrganizationFindFirstOrThrowArgs} args - Arguments to find a Organization
+   * @param {organizationFindFirstOrThrowArgs} args - Arguments to find a Organization
    * @example
    * // Get one Organization
    * const organization = await prisma.organization.findFirstOrThrow({
@@ -602,13 +602,13 @@ export interface OrganizationDelegate<ExtArgs extends runtime.Types.Extensions.I
    *   }
    * })
    */
-  findFirstOrThrow<T extends OrganizationFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, OrganizationFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__OrganizationClient<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findFirstOrThrow<T extends organizationFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, organizationFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__organizationClient<runtime.Types.Result.GetResult<Prisma.$organizationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find zero or more Organizations that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {OrganizationFindManyArgs} args - Arguments to filter and select certain fields only.
+   * @param {organizationFindManyArgs} args - Arguments to filter and select certain fields only.
    * @example
    * // Get all Organizations
    * const organizations = await prisma.organization.findMany()
@@ -620,11 +620,11 @@ export interface OrganizationDelegate<ExtArgs extends runtime.Types.Extensions.I
    * const organizationWithIdOnly = await prisma.organization.findMany({ select: { id: true } })
    * 
    */
-  findMany<T extends OrganizationFindManyArgs>(args?: Prisma.SelectSubset<T, OrganizationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+  findMany<T extends organizationFindManyArgs>(args?: Prisma.SelectSubset<T, organizationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$organizationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
   /**
    * Create a Organization.
-   * @param {OrganizationCreateArgs} args - Arguments to create a Organization.
+   * @param {organizationCreateArgs} args - Arguments to create a Organization.
    * @example
    * // Create one Organization
    * const Organization = await prisma.organization.create({
@@ -634,11 +634,11 @@ export interface OrganizationDelegate<ExtArgs extends runtime.Types.Extensions.I
    * })
    * 
    */
-  create<T extends OrganizationCreateArgs>(args: Prisma.SelectSubset<T, OrganizationCreateArgs<ExtArgs>>): Prisma.Prisma__OrganizationClient<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  create<T extends organizationCreateArgs>(args: Prisma.SelectSubset<T, organizationCreateArgs<ExtArgs>>): Prisma.Prisma__organizationClient<runtime.Types.Result.GetResult<Prisma.$organizationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Create many Organizations.
-   * @param {OrganizationCreateManyArgs} args - Arguments to create many Organizations.
+   * @param {organizationCreateManyArgs} args - Arguments to create many Organizations.
    * @example
    * // Create many Organizations
    * const organization = await prisma.organization.createMany({
@@ -648,11 +648,11 @@ export interface OrganizationDelegate<ExtArgs extends runtime.Types.Extensions.I
    * })
    *     
    */
-  createMany<T extends OrganizationCreateManyArgs>(args?: Prisma.SelectSubset<T, OrganizationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  createMany<T extends organizationCreateManyArgs>(args?: Prisma.SelectSubset<T, organizationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Delete a Organization.
-   * @param {OrganizationDeleteArgs} args - Arguments to delete one Organization.
+   * @param {organizationDeleteArgs} args - Arguments to delete one Organization.
    * @example
    * // Delete one Organization
    * const Organization = await prisma.organization.delete({
@@ -662,11 +662,11 @@ export interface OrganizationDelegate<ExtArgs extends runtime.Types.Extensions.I
    * })
    * 
    */
-  delete<T extends OrganizationDeleteArgs>(args: Prisma.SelectSubset<T, OrganizationDeleteArgs<ExtArgs>>): Prisma.Prisma__OrganizationClient<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  delete<T extends organizationDeleteArgs>(args: Prisma.SelectSubset<T, organizationDeleteArgs<ExtArgs>>): Prisma.Prisma__organizationClient<runtime.Types.Result.GetResult<Prisma.$organizationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Update one Organization.
-   * @param {OrganizationUpdateArgs} args - Arguments to update one Organization.
+   * @param {organizationUpdateArgs} args - Arguments to update one Organization.
    * @example
    * // Update one Organization
    * const organization = await prisma.organization.update({
@@ -679,11 +679,11 @@ export interface OrganizationDelegate<ExtArgs extends runtime.Types.Extensions.I
    * })
    * 
    */
-  update<T extends OrganizationUpdateArgs>(args: Prisma.SelectSubset<T, OrganizationUpdateArgs<ExtArgs>>): Prisma.Prisma__OrganizationClient<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  update<T extends organizationUpdateArgs>(args: Prisma.SelectSubset<T, organizationUpdateArgs<ExtArgs>>): Prisma.Prisma__organizationClient<runtime.Types.Result.GetResult<Prisma.$organizationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Delete zero or more Organizations.
-   * @param {OrganizationDeleteManyArgs} args - Arguments to filter Organizations to delete.
+   * @param {organizationDeleteManyArgs} args - Arguments to filter Organizations to delete.
    * @example
    * // Delete a few Organizations
    * const { count } = await prisma.organization.deleteMany({
@@ -693,13 +693,13 @@ export interface OrganizationDelegate<ExtArgs extends runtime.Types.Extensions.I
    * })
    * 
    */
-  deleteMany<T extends OrganizationDeleteManyArgs>(args?: Prisma.SelectSubset<T, OrganizationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  deleteMany<T extends organizationDeleteManyArgs>(args?: Prisma.SelectSubset<T, organizationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Update zero or more Organizations.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {OrganizationUpdateManyArgs} args - Arguments to update one or more rows.
+   * @param {organizationUpdateManyArgs} args - Arguments to update one or more rows.
    * @example
    * // Update many Organizations
    * const organization = await prisma.organization.updateMany({
@@ -712,11 +712,11 @@ export interface OrganizationDelegate<ExtArgs extends runtime.Types.Extensions.I
    * })
    * 
    */
-  updateMany<T extends OrganizationUpdateManyArgs>(args: Prisma.SelectSubset<T, OrganizationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  updateMany<T extends organizationUpdateManyArgs>(args: Prisma.SelectSubset<T, organizationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Create or update one Organization.
-   * @param {OrganizationUpsertArgs} args - Arguments to update or create a Organization.
+   * @param {organizationUpsertArgs} args - Arguments to update or create a Organization.
    * @example
    * // Update or create a Organization
    * const organization = await prisma.organization.upsert({
@@ -731,14 +731,14 @@ export interface OrganizationDelegate<ExtArgs extends runtime.Types.Extensions.I
    *   }
    * })
    */
-  upsert<T extends OrganizationUpsertArgs>(args: Prisma.SelectSubset<T, OrganizationUpsertArgs<ExtArgs>>): Prisma.Prisma__OrganizationClient<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  upsert<T extends organizationUpsertArgs>(args: Prisma.SelectSubset<T, organizationUpsertArgs<ExtArgs>>): Prisma.Prisma__organizationClient<runtime.Types.Result.GetResult<Prisma.$organizationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
   /**
    * Count the number of Organizations.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {OrganizationCountArgs} args - Arguments to filter Organizations to count.
+   * @param {organizationCountArgs} args - Arguments to filter Organizations to count.
    * @example
    * // Count the number of Organizations
    * const count = await prisma.organization.count({
@@ -747,8 +747,8 @@ export interface OrganizationDelegate<ExtArgs extends runtime.Types.Extensions.I
    *   }
    * })
   **/
-  count<T extends OrganizationCountArgs>(
-    args?: Prisma.Subset<T, OrganizationCountArgs>,
+  count<T extends organizationCountArgs>(
+    args?: Prisma.Subset<T, organizationCountArgs>,
   ): Prisma.PrismaPromise<
     T extends runtime.Types.Utils.Record<'select', any>
       ? T['select'] extends true
@@ -787,7 +787,7 @@ export interface OrganizationDelegate<ExtArgs extends runtime.Types.Extensions.I
    * Group by Organization.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {OrganizationGroupByArgs} args - Group by arguments.
+   * @param {organizationGroupByArgs} args - Group by arguments.
    * @example
    * // Group by city, order by createdAt, get count
    * const result = await prisma.user.groupBy({
@@ -802,14 +802,14 @@ export interface OrganizationDelegate<ExtArgs extends runtime.Types.Extensions.I
    * 
   **/
   groupBy<
-    T extends OrganizationGroupByArgs,
+    T extends organizationGroupByArgs,
     HasSelectOrTake extends Prisma.Or<
       Prisma.Extends<'skip', Prisma.Keys<T>>,
       Prisma.Extends<'take', Prisma.Keys<T>>
     >,
     OrderByArg extends Prisma.True extends HasSelectOrTake
-      ? { orderBy: OrganizationGroupByArgs['orderBy'] }
-      : { orderBy?: OrganizationGroupByArgs['orderBy'] },
+      ? { orderBy: organizationGroupByArgs['orderBy'] }
+      : { orderBy?: organizationGroupByArgs['orderBy'] },
     OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>,
     ByFields extends Prisma.MaybeTupleToUnion<T['by']>,
     ByValid extends Prisma.Has<ByFields, OrderFields>,
@@ -858,24 +858,24 @@ export interface OrganizationDelegate<ExtArgs extends runtime.Types.Extensions.I
           ? never
           : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
       }[OrderFields]
-  >(args: Prisma.SubsetIntersection<T, OrganizationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOrganizationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  >(args: Prisma.SubsetIntersection<T, organizationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOrganizationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 /**
- * Fields of the Organization model
+ * Fields of the organization model
  */
-readonly fields: OrganizationFieldRefs;
+readonly fields: organizationFieldRefs;
 }
 
 /**
- * The delegate class that acts as a "Promise-like" for Organization.
+ * The delegate class that acts as a "Promise-like" for organization.
  * Why is this prefixed with `Prisma__`?
  * Because we want to prevent naming conflicts as mentioned in
  * https://github.com/prisma/prisma-client-js/issues/707
  */
-export interface Prisma__OrganizationClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+export interface Prisma__organizationClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  products<T extends Prisma.Organization$productsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$productsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  suppliers<T extends Prisma.Organization$suppliersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$suppliersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SupplierPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  transactions<T extends Prisma.Organization$transactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  product<T extends Prisma.organization$productArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.organization$productArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$productPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  supplier<T extends Prisma.organization$supplierArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.organization$supplierArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$supplierPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  transaction<T extends Prisma.organization$transactionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.organization$transactionArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -902,439 +902,439 @@ export interface Prisma__OrganizationClient<T, Null = never, ExtArgs extends run
 
 
 /**
- * Fields of the Organization model
+ * Fields of the organization model
  */
-export interface OrganizationFieldRefs {
-  readonly id: Prisma.FieldRef<"Organization", 'String'>
-  readonly name: Prisma.FieldRef<"Organization", 'String'>
+export interface organizationFieldRefs {
+  readonly id: Prisma.FieldRef<"organization", 'String'>
+  readonly name: Prisma.FieldRef<"organization", 'String'>
 }
     
 
 // Custom InputTypes
 /**
- * Organization findUnique
+ * organization findUnique
  */
-export type OrganizationFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type organizationFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Organization
+   * Select specific fields to fetch from the organization
    */
-  select?: Prisma.OrganizationSelect<ExtArgs> | null
+  select?: Prisma.organizationSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Organization
+   * Omit specific fields from the organization
    */
-  omit?: Prisma.OrganizationOmit<ExtArgs> | null
+  omit?: Prisma.organizationOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.OrganizationInclude<ExtArgs> | null
+  include?: Prisma.organizationInclude<ExtArgs> | null
   /**
-   * Filter, which Organization to fetch.
+   * Filter, which organization to fetch.
    */
-  where: Prisma.OrganizationWhereUniqueInput
+  where: Prisma.organizationWhereUniqueInput
 }
 
 /**
- * Organization findUniqueOrThrow
+ * organization findUniqueOrThrow
  */
-export type OrganizationFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type organizationFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Organization
+   * Select specific fields to fetch from the organization
    */
-  select?: Prisma.OrganizationSelect<ExtArgs> | null
+  select?: Prisma.organizationSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Organization
+   * Omit specific fields from the organization
    */
-  omit?: Prisma.OrganizationOmit<ExtArgs> | null
+  omit?: Prisma.organizationOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.OrganizationInclude<ExtArgs> | null
+  include?: Prisma.organizationInclude<ExtArgs> | null
   /**
-   * Filter, which Organization to fetch.
+   * Filter, which organization to fetch.
    */
-  where: Prisma.OrganizationWhereUniqueInput
+  where: Prisma.organizationWhereUniqueInput
 }
 
 /**
- * Organization findFirst
+ * organization findFirst
  */
-export type OrganizationFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type organizationFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Organization
+   * Select specific fields to fetch from the organization
    */
-  select?: Prisma.OrganizationSelect<ExtArgs> | null
+  select?: Prisma.organizationSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Organization
+   * Omit specific fields from the organization
    */
-  omit?: Prisma.OrganizationOmit<ExtArgs> | null
+  omit?: Prisma.organizationOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.OrganizationInclude<ExtArgs> | null
+  include?: Prisma.organizationInclude<ExtArgs> | null
   /**
-   * Filter, which Organization to fetch.
+   * Filter, which organization to fetch.
    */
-  where?: Prisma.OrganizationWhereInput
+  where?: Prisma.organizationWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of Organizations to fetch.
+   * Determine the order of organizations to fetch.
    */
-  orderBy?: Prisma.OrganizationOrderByWithRelationInput | Prisma.OrganizationOrderByWithRelationInput[]
+  orderBy?: Prisma.organizationOrderByWithRelationInput | Prisma.organizationOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for Organizations.
+   * Sets the position for searching for organizations.
    */
-  cursor?: Prisma.OrganizationWhereUniqueInput
+  cursor?: Prisma.organizationWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` Organizations from the position of the cursor.
+   * Take `±n` organizations from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` Organizations.
+   * Skip the first `n` organizations.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of Organizations.
+   * Filter by unique combinations of organizations.
    */
   distinct?: Prisma.OrganizationScalarFieldEnum | Prisma.OrganizationScalarFieldEnum[]
 }
 
 /**
- * Organization findFirstOrThrow
+ * organization findFirstOrThrow
  */
-export type OrganizationFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type organizationFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Organization
+   * Select specific fields to fetch from the organization
    */
-  select?: Prisma.OrganizationSelect<ExtArgs> | null
+  select?: Prisma.organizationSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Organization
+   * Omit specific fields from the organization
    */
-  omit?: Prisma.OrganizationOmit<ExtArgs> | null
+  omit?: Prisma.organizationOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.OrganizationInclude<ExtArgs> | null
+  include?: Prisma.organizationInclude<ExtArgs> | null
   /**
-   * Filter, which Organization to fetch.
+   * Filter, which organization to fetch.
    */
-  where?: Prisma.OrganizationWhereInput
+  where?: Prisma.organizationWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of Organizations to fetch.
+   * Determine the order of organizations to fetch.
    */
-  orderBy?: Prisma.OrganizationOrderByWithRelationInput | Prisma.OrganizationOrderByWithRelationInput[]
+  orderBy?: Prisma.organizationOrderByWithRelationInput | Prisma.organizationOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for Organizations.
+   * Sets the position for searching for organizations.
    */
-  cursor?: Prisma.OrganizationWhereUniqueInput
+  cursor?: Prisma.organizationWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` Organizations from the position of the cursor.
+   * Take `±n` organizations from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` Organizations.
+   * Skip the first `n` organizations.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of Organizations.
+   * Filter by unique combinations of organizations.
    */
   distinct?: Prisma.OrganizationScalarFieldEnum | Prisma.OrganizationScalarFieldEnum[]
 }
 
 /**
- * Organization findMany
+ * organization findMany
  */
-export type OrganizationFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type organizationFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Organization
+   * Select specific fields to fetch from the organization
    */
-  select?: Prisma.OrganizationSelect<ExtArgs> | null
+  select?: Prisma.organizationSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Organization
+   * Omit specific fields from the organization
    */
-  omit?: Prisma.OrganizationOmit<ExtArgs> | null
+  omit?: Prisma.organizationOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.OrganizationInclude<ExtArgs> | null
+  include?: Prisma.organizationInclude<ExtArgs> | null
   /**
-   * Filter, which Organizations to fetch.
+   * Filter, which organizations to fetch.
    */
-  where?: Prisma.OrganizationWhereInput
+  where?: Prisma.organizationWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of Organizations to fetch.
+   * Determine the order of organizations to fetch.
    */
-  orderBy?: Prisma.OrganizationOrderByWithRelationInput | Prisma.OrganizationOrderByWithRelationInput[]
+  orderBy?: Prisma.organizationOrderByWithRelationInput | Prisma.organizationOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for listing Organizations.
+   * Sets the position for listing organizations.
    */
-  cursor?: Prisma.OrganizationWhereUniqueInput
+  cursor?: Prisma.organizationWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` Organizations from the position of the cursor.
+   * Take `±n` organizations from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` Organizations.
+   * Skip the first `n` organizations.
    */
   skip?: number
   distinct?: Prisma.OrganizationScalarFieldEnum | Prisma.OrganizationScalarFieldEnum[]
 }
 
 /**
- * Organization create
+ * organization create
  */
-export type OrganizationCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type organizationCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Organization
+   * Select specific fields to fetch from the organization
    */
-  select?: Prisma.OrganizationSelect<ExtArgs> | null
+  select?: Prisma.organizationSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Organization
+   * Omit specific fields from the organization
    */
-  omit?: Prisma.OrganizationOmit<ExtArgs> | null
+  omit?: Prisma.organizationOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.OrganizationInclude<ExtArgs> | null
+  include?: Prisma.organizationInclude<ExtArgs> | null
   /**
-   * The data needed to create a Organization.
+   * The data needed to create a organization.
    */
-  data: Prisma.XOR<Prisma.OrganizationCreateInput, Prisma.OrganizationUncheckedCreateInput>
+  data: Prisma.XOR<Prisma.organizationCreateInput, Prisma.organizationUncheckedCreateInput>
 }
 
 /**
- * Organization createMany
+ * organization createMany
  */
-export type OrganizationCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type organizationCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to create many Organizations.
+   * The data used to create many organizations.
    */
-  data: Prisma.OrganizationCreateManyInput | Prisma.OrganizationCreateManyInput[]
+  data: Prisma.organizationCreateManyInput | Prisma.organizationCreateManyInput[]
   skipDuplicates?: boolean
 }
 
 /**
- * Organization update
+ * organization update
  */
-export type OrganizationUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type organizationUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Organization
+   * Select specific fields to fetch from the organization
    */
-  select?: Prisma.OrganizationSelect<ExtArgs> | null
+  select?: Prisma.organizationSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Organization
+   * Omit specific fields from the organization
    */
-  omit?: Prisma.OrganizationOmit<ExtArgs> | null
+  omit?: Prisma.organizationOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.OrganizationInclude<ExtArgs> | null
+  include?: Prisma.organizationInclude<ExtArgs> | null
   /**
-   * The data needed to update a Organization.
+   * The data needed to update a organization.
    */
-  data: Prisma.XOR<Prisma.OrganizationUpdateInput, Prisma.OrganizationUncheckedUpdateInput>
+  data: Prisma.XOR<Prisma.organizationUpdateInput, Prisma.organizationUncheckedUpdateInput>
   /**
-   * Choose, which Organization to update.
+   * Choose, which organization to update.
    */
-  where: Prisma.OrganizationWhereUniqueInput
+  where: Prisma.organizationWhereUniqueInput
 }
 
 /**
- * Organization updateMany
+ * organization updateMany
  */
-export type OrganizationUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type organizationUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to update Organizations.
+   * The data used to update organizations.
    */
-  data: Prisma.XOR<Prisma.OrganizationUpdateManyMutationInput, Prisma.OrganizationUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.organizationUpdateManyMutationInput, Prisma.organizationUncheckedUpdateManyInput>
   /**
-   * Filter which Organizations to update
+   * Filter which organizations to update
    */
-  where?: Prisma.OrganizationWhereInput
+  where?: Prisma.organizationWhereInput
   /**
-   * Limit how many Organizations to update.
+   * Limit how many organizations to update.
    */
   limit?: number
 }
 
 /**
- * Organization upsert
+ * organization upsert
  */
-export type OrganizationUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type organizationUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Organization
+   * Select specific fields to fetch from the organization
    */
-  select?: Prisma.OrganizationSelect<ExtArgs> | null
+  select?: Prisma.organizationSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Organization
+   * Omit specific fields from the organization
    */
-  omit?: Prisma.OrganizationOmit<ExtArgs> | null
+  omit?: Prisma.organizationOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.OrganizationInclude<ExtArgs> | null
+  include?: Prisma.organizationInclude<ExtArgs> | null
   /**
-   * The filter to search for the Organization to update in case it exists.
+   * The filter to search for the organization to update in case it exists.
    */
-  where: Prisma.OrganizationWhereUniqueInput
+  where: Prisma.organizationWhereUniqueInput
   /**
-   * In case the Organization found by the `where` argument doesn't exist, create a new Organization with this data.
+   * In case the organization found by the `where` argument doesn't exist, create a new organization with this data.
    */
-  create: Prisma.XOR<Prisma.OrganizationCreateInput, Prisma.OrganizationUncheckedCreateInput>
+  create: Prisma.XOR<Prisma.organizationCreateInput, Prisma.organizationUncheckedCreateInput>
   /**
-   * In case the Organization was found with the provided `where` argument, update it with this data.
+   * In case the organization was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<Prisma.OrganizationUpdateInput, Prisma.OrganizationUncheckedUpdateInput>
+  update: Prisma.XOR<Prisma.organizationUpdateInput, Prisma.organizationUncheckedUpdateInput>
 }
 
 /**
- * Organization delete
+ * organization delete
  */
-export type OrganizationDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type organizationDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Organization
+   * Select specific fields to fetch from the organization
    */
-  select?: Prisma.OrganizationSelect<ExtArgs> | null
+  select?: Prisma.organizationSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Organization
+   * Omit specific fields from the organization
    */
-  omit?: Prisma.OrganizationOmit<ExtArgs> | null
+  omit?: Prisma.organizationOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.OrganizationInclude<ExtArgs> | null
+  include?: Prisma.organizationInclude<ExtArgs> | null
   /**
-   * Filter which Organization to delete.
+   * Filter which organization to delete.
    */
-  where: Prisma.OrganizationWhereUniqueInput
+  where: Prisma.organizationWhereUniqueInput
 }
 
 /**
- * Organization deleteMany
+ * organization deleteMany
  */
-export type OrganizationDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type organizationDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which Organizations to delete
+   * Filter which organizations to delete
    */
-  where?: Prisma.OrganizationWhereInput
+  where?: Prisma.organizationWhereInput
   /**
-   * Limit how many Organizations to delete.
+   * Limit how many organizations to delete.
    */
   limit?: number
 }
 
 /**
- * Organization.products
+ * organization.product
  */
-export type Organization$productsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type organization$productArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Product
+   * Select specific fields to fetch from the product
    */
-  select?: Prisma.ProductSelect<ExtArgs> | null
+  select?: Prisma.productSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Product
+   * Omit specific fields from the product
    */
-  omit?: Prisma.ProductOmit<ExtArgs> | null
+  omit?: Prisma.productOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.ProductInclude<ExtArgs> | null
-  where?: Prisma.ProductWhereInput
-  orderBy?: Prisma.ProductOrderByWithRelationInput | Prisma.ProductOrderByWithRelationInput[]
-  cursor?: Prisma.ProductWhereUniqueInput
+  include?: Prisma.productInclude<ExtArgs> | null
+  where?: Prisma.productWhereInput
+  orderBy?: Prisma.productOrderByWithRelationInput | Prisma.productOrderByWithRelationInput[]
+  cursor?: Prisma.productWhereUniqueInput
   take?: number
   skip?: number
   distinct?: Prisma.ProductScalarFieldEnum | Prisma.ProductScalarFieldEnum[]
 }
 
 /**
- * Organization.suppliers
+ * organization.supplier
  */
-export type Organization$suppliersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type organization$supplierArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Supplier
+   * Select specific fields to fetch from the supplier
    */
-  select?: Prisma.SupplierSelect<ExtArgs> | null
+  select?: Prisma.supplierSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Supplier
+   * Omit specific fields from the supplier
    */
-  omit?: Prisma.SupplierOmit<ExtArgs> | null
+  omit?: Prisma.supplierOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SupplierInclude<ExtArgs> | null
-  where?: Prisma.SupplierWhereInput
-  orderBy?: Prisma.SupplierOrderByWithRelationInput | Prisma.SupplierOrderByWithRelationInput[]
-  cursor?: Prisma.SupplierWhereUniqueInput
+  include?: Prisma.supplierInclude<ExtArgs> | null
+  where?: Prisma.supplierWhereInput
+  orderBy?: Prisma.supplierOrderByWithRelationInput | Prisma.supplierOrderByWithRelationInput[]
+  cursor?: Prisma.supplierWhereUniqueInput
   take?: number
   skip?: number
   distinct?: Prisma.SupplierScalarFieldEnum | Prisma.SupplierScalarFieldEnum[]
 }
 
 /**
- * Organization.transactions
+ * organization.transaction
  */
-export type Organization$transactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type organization$transactionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Transaction
+   * Select specific fields to fetch from the transaction
    */
-  select?: Prisma.TransactionSelect<ExtArgs> | null
+  select?: Prisma.transactionSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Transaction
+   * Omit specific fields from the transaction
    */
-  omit?: Prisma.TransactionOmit<ExtArgs> | null
+  omit?: Prisma.transactionOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.TransactionInclude<ExtArgs> | null
-  where?: Prisma.TransactionWhereInput
-  orderBy?: Prisma.TransactionOrderByWithRelationInput | Prisma.TransactionOrderByWithRelationInput[]
-  cursor?: Prisma.TransactionWhereUniqueInput
+  include?: Prisma.transactionInclude<ExtArgs> | null
+  where?: Prisma.transactionWhereInput
+  orderBy?: Prisma.transactionOrderByWithRelationInput | Prisma.transactionOrderByWithRelationInput[]
+  cursor?: Prisma.transactionWhereUniqueInput
   take?: number
   skip?: number
   distinct?: Prisma.TransactionScalarFieldEnum | Prisma.TransactionScalarFieldEnum[]
 }
 
 /**
- * Organization without action
+ * organization without action
  */
-export type OrganizationDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type organizationDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Organization
+   * Select specific fields to fetch from the organization
    */
-  select?: Prisma.OrganizationSelect<ExtArgs> | null
+  select?: Prisma.organizationSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Organization
+   * Omit specific fields from the organization
    */
-  omit?: Prisma.OrganizationOmit<ExtArgs> | null
+  omit?: Prisma.organizationOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.OrganizationInclude<ExtArgs> | null
+  include?: Prisma.organizationInclude<ExtArgs> | null
 }

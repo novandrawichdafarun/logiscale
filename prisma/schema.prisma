@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client"
   output   = "./generated/prisma"
@@ -13,69 +7,71 @@ datasource db {
   provider = "mysql"
 }
 
-// 1. Multi-tenancy Root
-// Semua data harus berelasi ke Organization agar data antar perusahaan tidak bocor.
-model Organization {
-  id        String   @id @default(uuid())
-  name      String
-  products  Product[]
-  suppliers Supplier[]
-  transactions Transaction[]
+model organization {
+  id          String        @id
+  name        String
+  product     product[]
+  supplier    supplier[]
+  transaction transaction[]
 }
 
-// 2. Supplier Data (Penting untuk Lead Time)
-model Supplier {
-  id             String       @id @default(uuid())
-  organizationId String
-  name           String
-  // Berapa hari rata-rata supplier mengirim barang? (Kunci rumus forecasting)
-  leadTimeDays   Int          @default(7) 
-  organization   Organization @relation(fields: [organizationId], references: [id])
-  products       Product[]
-  
-  @@index([organizationId]) // Indexing untuk performa query
-}
-
-// 3. Product Master
-model Product {
-  id             String       @id @default(uuid())
+model product {
+  id             String        @id
   organizationId String
   supplierId     String
   name           String
   sku            String
-  currentStock   Int          @default(0)
+  currentStock   Int           @default(0)
   price          Decimal
-  
-  // Field Hasil Kalkulasi (Diupdate oleh Background Job, bukan user input)
-  safetyStock    Int          @default(0)
-  reorderPoint   Int          @default(0)
-  
-  organization   Organization @relation(fields: [organizationId], references: [id])
-  supplier       Supplier     @relation(fields: [supplierId], references: [id])
-  transactions   Transaction[]
+  safetyStock    Int           @default(0)
+  reorderPoint   Int           @default(0)
+  organization   organization  @relation(fields: [organizationId], references: [id], map: "Product_organizationId_fkey")
+  supplier       supplier      @relation(fields: [supplierId], references: [id], map: "Product_supplierId_fkey")
+  transaction    transaction[]
+  purchaseOrders PurchaseOrder[]
 
-  @@unique([organizationId, sku]) // SKU harus unik dalam satu organisasi
-  @@index([organizationId])
+  @@unique([organizationId, sku], map: "Product_organizationId_sku_key")
+  @@index([organizationId], map: "Product_organizationId_idx")
+  @@index([supplierId], map: "Product_supplierId_fkey")
 }
 
-// 4. Ledger Transaksi (Source of Truth)
-// Kita tidak menghapus data di sini. Ini adalah 'immutable log'.
-model Transaction {
-  id             String            @id @default(uuid())
+model supplier {
+  id             String       @id
+  organizationId String
+  name           String
+  leadTimeDays   Int          @default(7)
+  product        product[]
+  organization   organization @relation(fields: [organizationId], references: [id], map: "Supplier_organizationId_fkey")
+
+  @@index([organizationId], map: "Supplier_organizationId_idx")
+}
+
+model transaction {
+  id             String           @id
   organizationId String
   productId      String
-  type           TransactionType
+  type           transaction_type
   quantity       Int
-  createdAt      DateTime          @default(now())
-  
-  product        Product           @relation(fields: [productId], references: [id])
-  organization   Organization      @relation(fields: [organizationId], references: [id])
+  createdAt      DateTime         @default(now())
+  organization   organization     @relation(fields: [organizationId], references: [id], map: "Transaction_organizationId_fkey")
+  product        product          @relation(fields: [productId], references: [id], map: "Transaction_productId_fkey")
 
-  @@index([productId, createdAt]) // Index komposit: Sangat penting untuk kecepatan query rentang waktu!
+  @@index([organizationId], map: "Transaction_organizationId_fkey")
+  @@index([productId, createdAt], map: "Transaction_productId_createdAt_idx")
 }
 
-enum TransactionType {
-  INBOUND  // Barang masuk (beli)
-  OUTBOUND // Barang keluar (jual)
-  ADJUSTMENT // Koreksi stok
+model PurchaseOrder {
+  id        String   @id @default(uuid())
+  productId String
+  quantity  Int
+  status    String   @default("PENDING") // PENDING, SENT, RECEIVED
+  createdAt DateTime @default(now())
+  
+  product   product  @relation(fields: [productId], references: [id])
+}
+
+enum transaction_type {
+  INBOUND
+  OUTBOUND
+  ADJUSTMENT
 }

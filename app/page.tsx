@@ -3,6 +3,7 @@ import { generateForecast } from "@/lib/inventory-engine";
 import ForecastChart from "@/components/ForecastChart";
 import { AlertTriangle, CheckCircle, Package } from "lucide-react";
 import InventorySimulator from "@/components/InventorySimulator";
+import { MetricCardProps } from "@/app/types/MetricCardProps";
 
 export const dynamic = "force-dynamic";
 
@@ -82,6 +83,7 @@ export default async function DashboardPage() {
         <section className="p-6">
           <InventorySimulator
             initialData={{
+              productId: product.id,
               avgDailySales: analysis.metrics.avgDailySales,
               stdDev: analysis.metrics.stdDev, // Ini data baru dari backend
               leadTimeDays: analysis.metrics.leadTimeDemand,
@@ -114,7 +116,7 @@ export default async function DashboardPage() {
 }
 
 // Komponen Kecil untuk Card (Langsung di file yang sama agar ringkas)
-function MetricCard({ label, value, sub, highlight = false }: any) {
+function MetricCard({ label, value, sub, highlight = false }: MetricCardProps) {
   return (
     <div
       className={`p-6 rounded-xl border shadow-sm ${highlight ? "bg-white border-blue-200" : "bg-white border-gray-100"}`}

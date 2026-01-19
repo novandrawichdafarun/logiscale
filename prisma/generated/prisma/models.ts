@@ -8,8 +8,9 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/Organization'
-export type * from './models/Supplier'
-export type * from './models/Product'
-export type * from './models/Transaction'
+export type * from './models/organization'
+export type * from './models/product'
+export type * from './models/supplier'
+export type * from './models/transaction'
+export type * from './models/PurchaseOrder'
 export type * from './commonInputTypes'
