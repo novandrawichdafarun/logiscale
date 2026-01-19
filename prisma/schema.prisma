@@ -1,0 +1,81 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+// 1. Multi-tenancy Root
+// Semua data harus berelasi ke Organization agar data antar perusahaan tidak bocor.
+model Organization {
+  id        String   @id @default(uuid())
+  name      String
+  products  Product[]
+  suppliers Supplier[]
+  transactions Transaction[]
+}
+
+// 2. Supplier Data (Penting untuk Lead Time)
+model Supplier {
+  id             String       @id @default(uuid())
+  organizationId String
+  name           String
+  // Berapa hari rata-rata supplier mengirim barang? (Kunci rumus forecasting)
+  leadTimeDays   Int          @default(7) 
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  products       Product[]
+  
+  @@index([organizationId]) // Indexing untuk performa query
+}
+
+// 3. Product Master
+model Product {
+  id             String       @id @default(uuid())
+  organizationId String
+  supplierId     String
+  name           String
+  sku            String
+  currentStock   Int          @default(0)
+  price          Decimal
+  
+  // Field Hasil Kalkulasi (Diupdate oleh Background Job, bukan user input)
+  safetyStock    Int          @default(0)
+  reorderPoint   Int          @default(0)
+  
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  supplier       Supplier     @relation(fields: [supplierId], references: [id])
+  transactions   Transaction[]
+
+  @@unique([organizationId, sku]) // SKU harus unik dalam satu organisasi
+  @@index([organizationId])
+}
+
+// 4. Ledger Transaksi (Source of Truth)
+// Kita tidak menghapus data di sini. Ini adalah 'immutable log'.
+model Transaction {
+  id             String            @id @default(uuid())
+  organizationId String
+  productId      String
+  type           TransactionType
+  quantity       Int
+  createdAt      DateTime          @default(now())
+  
+  product        Product           @relation(fields: [productId], references: [id])
+  organization   Organization      @relation(fields: [organizationId], references: [id])
+
+  @@index([productId, createdAt]) // Index komposit: Sangat penting untuk kecepatan query rentang waktu!
+}
+
+enum TransactionType {
+  INBOUND  // Barang masuk (beli)
+  OUTBOUND // Barang keluar (jual)
+  ADJUSTMENT // Koreksi stok
+}
