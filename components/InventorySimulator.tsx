@@ -12,7 +12,7 @@ import {
   ReferenceLine,
   Legend,
 } from "recharts";
-import { Settings2, RefreshCcw, ShoppingCart, Loader2 } from "lucide-react";
+import { Settings2, ShoppingCart, Loader2 } from "lucide-react";
 import { createPurchaseOrder } from "@/app/actions";
 
 interface Props {
@@ -184,7 +184,7 @@ export default function InventorySimulator({ initialData, chartData }: Props) {
       </div>
 
       {/* GRAFIK REAKTIF */}
-      <div className="h-[400px] w-full bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+      <div className="h-100 w-full bg-white p-4 rounded-xl shadow-sm border border-gray-100">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={chartData}

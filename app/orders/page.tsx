@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { BadgeCheck, Clock, Truck } from "lucide-react";
+import { Truck } from "lucide-react";
 import ReceiveButton from "@/components/ReceiveButton";
 
 export const dynamic = "force-dynamic";

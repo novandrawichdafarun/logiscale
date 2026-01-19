@@ -24,7 +24,7 @@ export default function ForecastChart({
   safetyStock,
 }: ChartProps) {
   return (
-    <div className="h-[400px] w-full bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+    <div className="h-100 w-full bg-white p-4 rounded-xl shadow-sm border border-gray-100">
       <h3 className="text-lg font-semibold mb-4 text-gray-700">
         Analisis Tren Penjualan (90 Hari)
       </h3>
