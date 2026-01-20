@@ -11,12 +11,7 @@ import {
   ReferenceLine,
   Legend,
 } from "recharts";
-
-interface ChartProps {
-  data: { date: string; sales: number }[];
-  reorderPoint: number;
-  safetyStock: number;
-}
+import { ChartProps } from "@/app/types/ChartProps";
 
 export default function ForecastChart({
   data,
@@ -24,15 +19,15 @@ export default function ForecastChart({
   safetyStock,
 }: ChartProps) {
   return (
-    <div className="h-100 w-full bg-white p-4 rounded-xl shadow-sm border border-gray-100">
-      <h3 className="text-lg font-semibold mb-4 text-gray-700">
+    <div className="h-110 w-full bg-white p-4 py-10 rounded-xl shadow-sm border border-gray-100">
+      <h3 className="text-lg font-semibold mb-2 text-gray-700">
         Analisis Tren Penjualan (90 Hari)
       </h3>
 
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={data}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
         >
           <CartesianGrid strokeDasharray="3 3" opacity={0.3} />
           <XAxis
@@ -58,7 +53,7 @@ export default function ForecastChart({
             type="monotone"
             dataKey="sales"
             stroke="#2563eb"
-            strokeWidth={2}
+            strokeWidth={1}
             name="Penjualan Harian"
             dot={false}
           />

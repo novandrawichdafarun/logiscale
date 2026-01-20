@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-import { LayoutDashboard, ShoppingCart, History } from "lucide-react";
+import { LayoutDashboard, ShoppingCart, History, Package } from "lucide-react";
 
 export default function Navbar() {
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
-      <div className="max-w-5xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-0">
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
@@ -22,6 +22,13 @@ export default function Navbar() {
             >
               <LayoutDashboard size={18} />
               Dashboard
+            </Link>
+            <Link
+              href="/products"
+              className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
+            >
+              <Package size={18} />
+              Products
             </Link>
             <Link
               href="/orders"

@@ -14,17 +14,7 @@ import {
 } from "recharts";
 import { Settings2, ShoppingCart, Loader2 } from "lucide-react";
 import { createPurchaseOrder } from "@/app/actions";
-
-interface Props {
-  initialData: {
-    productId: string;
-    avgDailySales: number;
-    stdDev: number; // Kita butuh standar deviasi dikirim dari server
-    leadTimeDays: number;
-    currentStock: number;
-  };
-  chartData: { date: string; sales: number }[];
-}
+import { Props } from "@/app/types/Props";
 
 export default function InventorySimulator({ initialData, chartData }: Props) {
   const [leadTime, setLeadTime] = useState(initialData.leadTimeDays);
