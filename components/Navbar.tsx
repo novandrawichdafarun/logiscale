@@ -1,6 +1,12 @@
 import Link from "next/link";
 
-import { LayoutDashboard, ShoppingCart, History, Package } from "lucide-react";
+import {
+  LayoutDashboard,
+  ShoppingCart,
+  History,
+  Package,
+  Truck,
+} from "lucide-react";
 
 export default function Navbar() {
   return (
@@ -29,6 +35,13 @@ export default function Navbar() {
             >
               <Package size={18} />
               Products
+            </Link>
+            <Link
+              href="/suppliers"
+              className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
+            >
+              <Truck size={18} />
+              Suppliers
             </Link>
             <Link
               href="/orders"

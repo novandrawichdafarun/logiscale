@@ -2,9 +2,9 @@
 
 import { useState, useTransition } from "react";
 import { addNewProduct, recordStockOut } from "@/app/actions";
-import { Plus, MinusCircle, Loader2, Save } from "lucide-react";
+import { Plus, MinusCircle, Loader2, Save, Truck } from "lucide-react";
 import { Supplier } from "@/app/types/Supplier";
-import SupplierModal from "./SupplierModal";
+import Link from "next/link";
 
 export default function ProductManager({
   suppliers,
@@ -101,7 +101,12 @@ export default function ProductManager({
                 </select>
 
                 {/* Component Supplier Modal */}
-                <SupplierModal />
+                {/* <Link
+                  href="/products"
+                  className="text-xs text-blue-600 font-bold hover:underline flex items-center gap-1 mt-1"
+                >
+                  <Truck size={12} /> + Supplier Baru
+                </Link> */}
               </div>
             </div>
 
@@ -158,7 +163,7 @@ export function StockOutButton({
   };
 
   return (
-    <div className="flex items-center gap-2 justify-end">
+    <div className="flex items-center gap-2 justify-center">
       <input
         type="number"
         min="1"

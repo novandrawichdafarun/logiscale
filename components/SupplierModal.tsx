@@ -2,7 +2,7 @@
 
 import { addNewSupplier } from "@/app/actions";
 import { useState, useTransition } from "react";
-import { Truck, Loader2, X } from "lucide-react";
+import { Truck, Loader2, X, Plus } from "lucide-react";
 import { createPortal } from "react-dom";
 
 export default function SupplierModal() {
@@ -29,7 +29,7 @@ export default function SupplierModal() {
         onClick={() => setIsOpen(true)}
         className="text-xs text-blue-600 font-bold hover:underline flex items-center gap-1 mt-1"
       >
-        <Truck size={12} /> + Supplier Baru
+        <Plus size={12} /> Supplier Baru
       </button>
 
       {/* Modal Overlay */}

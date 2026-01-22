@@ -107,6 +107,65 @@ export async function addNewProduct(formData: FormData) {
   }
 }
 
+export async function updateProduct(formData: FormData) {
+  const id = formData.get("id") as string;
+  const name = formData.get("name") as string;
+  const sku = formData.get("sku") as string;
+  const price = Number(formData.get("price"));
+  const supplierId = formData.get("supplierId") as string;
+
+  try {
+    await prisma.product.update({
+      where: { id },
+      data: {
+        name,
+        sku,
+        price,
+        supplierId,
+      },
+    });
+
+    revalidatePath("/products");
+    return { success: true, message: "Data produk berhasil diperbarui!" };
+  } catch (error) {
+    console.error("Update Product Error:", error);
+    return { success: false, message: "Gagal update Product" };
+  }
+}
+
+export async function deleteProduct(productId: string) {
+  try {
+    const hasTransactions = await prisma.transaction.count({
+      where: { productId },
+    });
+
+    const hasPo = await prisma.purchaseOrder.count({
+      where: { productId },
+    });
+
+    if (hasTransactions > 0 || hasPo > 0) {
+      return {
+        success: false,
+        message:
+          "Gagal Menghapus: Produk ini memiliki riwayat transaksi atau terdaftar dalam PO",
+      };
+    }
+
+    await prisma.product.delete({
+      where: { id: productId },
+    });
+
+    revalidatePath("/products");
+    return { success: true, message: "Produk berhasil dihapus" };
+  } catch (error) {
+    console.error("Delete Error:", error);
+    return {
+      success: false,
+      message: "Terjadi kesalahan saat menghapus produk.",
+    };
+  }
+}
+
 export async function recordStockOut(productId: string, quantity: number) {
   if (quantity <= 0) return { success: false, message: "Jumlah harus positif" };
 
@@ -166,10 +225,57 @@ export async function addNewSupplier(formData: FormData) {
       },
     });
 
+    revalidatePath("/suppliers");
     revalidatePath("/products");
     return { success: true, message: "Supplier berhasil ditambahkan!" };
   } catch (error) {
     console.error("Add Supplier Error:", error);
     return { success: false, message: "Gagal menambahkan supplier." };
+  }
+}
+
+export async function updateSupplier(formData: FormData) {
+  const id = formData.get("id") as string;
+  const name = formData.get("name") as string;
+  const leadTime = Number(formData.get("leadTime"));
+
+  try {
+    await prisma.supplier.update({
+      where: { id },
+      data: {
+        name,
+        leadTimeDays: leadTime,
+      },
+    });
+
+    revalidatePath("/suppliers");
+    revalidatePath("/products");
+    return { success: true, message: "Supplier Berhasil diperbarui" };
+  } catch (error) {
+    console.error("Update Supplier Error:", error);
+    return { success: false, message: "Gagal Update Supplier" };
+  }
+}
+
+export async function deleteSupplier(id: string) {
+  try {
+    const productCount = await prisma.product.count({
+      where: { supplierId: id },
+    });
+
+    if (productCount > 0) {
+      return {
+        success: false,
+        message: `Gagal: Supplier ini menyuplai ${productCount} produk. Hapus produknya dulu.`,
+      };
+    }
+
+    await prisma.supplier.delete({ where: { id } });
+
+    revalidatePath("/suppliers");
+    return { success: true, message: "Supplier berhasil dihapus" };
+  } catch (error) {
+    console.error(error);
+    return { success: false, message: "Gagal menghapus supplier" };
   }
 }

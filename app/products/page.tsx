@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import { Package, Tag } from "lucide-react";
 import ProductManager, { StockOutButton } from "@/components/ProductManager";
+import DeleteProductButton from "@/components/DeleteProductButton";
+import EditProductModal from "@/components/EditProductModal";
 
 export const dynamic = "force-dynamic";
 
@@ -11,7 +13,7 @@ export default async function ProductPage() {
   });
 
   const suppliers = await prisma.supplier.findMany({
-    select: { id: true, name: true },
+    select: { id: true, name: true, leadTimeDays: true },
   });
 
   return (
@@ -35,7 +37,8 @@ export default async function ProductPage() {
                 <th className="p-4">Supplier</th>
                 <th className="p-4">Harga</th>
                 <th className="p-4 text-center">Stok Fisik</th>
-                <th className="p-4 text-right">Aksi Barang Keluar</th>
+                <th className="p-4 text-center">Barang Keluar</th>
+                <th className="p-4 text-center w-[50px]">Aksi</th>
               </tr>
             </thead>
             <tbody className="divide-y">
@@ -64,11 +67,27 @@ export default async function ProductPage() {
                       {p.currentStock} Unit
                     </span>
                   </td>
-                  <td className="p-4 text-right">
+                  <td className="p-4 text-center">
                     {/* Tombol Input Barang Keluar per Baris */}
                     <StockOutButton
                       productId={p.id}
                       maxStock={p.currentStock}
+                    />
+                  </td>
+                  <td className="p-4 text-center justify-center gap-2">
+                    <EditProductModal
+                      product={{
+                        id: p.id,
+                        name: p.name,
+                        sku: p.sku,
+                        price: Number(p.price),
+                        supplierId: p.supplierId,
+                      }}
+                      suppliers={suppliers}
+                    />
+                    <DeleteProductButton
+                      productId={p.id}
+                      productName={p.name}
                     />
                   </td>
                 </tr>
