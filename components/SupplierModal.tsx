@@ -27,9 +27,9 @@ export default function SupplierModal() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="text-xs text-blue-600 font-bold hover:underline flex items-center gap-1 mt-1"
+        className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-700 transition-colors mb-6"
       >
-        <Plus size={12} /> Supplier Baru
+        <Plus size={18} /> Tambah Supplier Baru
       </button>
 
       {/* Modal Overlay */}

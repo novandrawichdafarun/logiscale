@@ -13,7 +13,7 @@ export default async function SuppliersPage() {
 
   return (
     <main className="min-h-screen bg-gray-50 p-8 text-black">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <h1 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
           <Truck className="text-blue-600" /> Manajemen Supplier
         </h1>

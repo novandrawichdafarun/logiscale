@@ -101,12 +101,12 @@ export default function ProductManager({
                 </select>
 
                 {/* Component Supplier Modal */}
-                {/* <Link
-                  href="/products"
+                <Link
+                  href="/suppliers"
                   className="text-xs text-blue-600 font-bold hover:underline flex items-center gap-1 mt-1"
                 >
-                  <Truck size={12} /> + Supplier Baru
-                </Link> */}
+                  + Supplier Baru
+                </Link>
               </div>
             </div>
 
